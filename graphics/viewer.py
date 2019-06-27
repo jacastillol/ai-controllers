@@ -23,6 +23,9 @@ class Viewer:
         self.window.clear()
         self.window.switch_to()
         self.window.dispatch_events()
+        self.transform.enable()
+        # Here we can render all objects respect the global coords
+        self.transform.disable()
         self.window.flip()
 
     def __del__(self):
