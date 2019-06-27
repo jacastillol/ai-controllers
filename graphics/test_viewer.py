@@ -2,14 +2,25 @@ from viewer import Viewer, FilledPolygon, Transform
 
 viewer = Viewer(600,400)
 
-cartwidth = 50.0
-cartheight = 30.0
-l,r,t,b = -cartwidth/2, cartwidth/2, cartheight/2, -cartheight/2
+cart_w = 50.0
+cart_h = 30.0
+l,r,t,b = -cart_w/2, cart_w/2, cart_h/2, -cart_h/2
 cart = FilledPolygon([(l,b), (l,t), (r,t), (r,b)])
 cart.set_color(.0,.8,.8)
 carttrans = Transform()
 cart.add_attr(carttrans)
 viewer.geoms.append(cart)
+
+pole_w = 10.0
+pole_l = 125.0
+l,r,t,b = -pole_w/2,pole_w/2,pole_l-pole_w/2,-pole_w/2
+pole = rendering.FilledPolygon([(l,b), (l,t), (r,t), (r,b)])
+pole.set_color(.8,.6,.4)
+poletrans = rendering.Transform(translation=(0, axleoffset))
+pole.add_attr(poletrans)
+pole.add_attr(carttrans)
+viewer.add_geom(pole)
+
 for i in range(100):
     viewer.render()
     print(i)
