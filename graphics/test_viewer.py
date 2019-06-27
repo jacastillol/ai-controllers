@@ -14,12 +14,12 @@ viewer.geoms.append(cart)
 pole_w = 10.0
 pole_l = 125.0
 l,r,t,b = -pole_w/2,pole_w/2,pole_l-pole_w/2,-pole_w/2
-pole = rendering.FilledPolygon([(l,b), (l,t), (r,t), (r,b)])
+pole = FilledPolygon([(l,b), (l,t), (r,t), (r,b)])
 pole.set_color(.8,.6,.4)
-poletrans = rendering.Transform(translation=(0, axleoffset))
+poletrans = Transform(translation=(0, cart_h/4.0))
 pole.add_attr(poletrans)
 pole.add_attr(carttrans)
-viewer.add_geom(pole)
+viewer.geoms.append(pole)
 
 for i in range(100):
     viewer.render()
