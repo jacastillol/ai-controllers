@@ -1,4 +1,4 @@
-from viewer import Viewer, FilledPolygon, Transform 
+from viewer import Viewer, FilledPolygon, Transform, RAD2DEG
 
 viewer = Viewer(600,400)
 
@@ -22,6 +22,8 @@ pole.add_attr(carttrans)
 viewer.geoms.append(pole)
 
 for i in range(100):
+    carttrans.set_translation(i+300, 100)
+    poletrans.set_rotation(-(100-i)/100*45/RAD2DEG)
     viewer.render()
     print(i)
 
