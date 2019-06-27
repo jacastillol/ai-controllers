@@ -52,6 +52,12 @@ class Transform(Attr):
     def set_scale(self, newx, newy):
         self.scale = (float(newx), float(newy))
 
+class Color(Attr):
+    def __init__(self, vec4):
+        self.vec4 = vec4
+    def enable(self):
+        glColor4f(*self.vec4)
+
 viewer = Viewer(600,400)
 
 for i in range(100):
