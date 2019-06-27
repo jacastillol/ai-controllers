@@ -5,6 +5,8 @@
 import pyglet
 from pyglet.gl import *
 
+RAD2DEG = 57.29577951308232
+
 class Viewer:
     def __init__(self, width, height):
         self.width = width
@@ -26,6 +28,8 @@ class Viewer:
         self.window.dispatch_events()
         self.transform.enable()
         # Here we can render all objects respect the global coords
+        for geom in self.geoms:
+            geom.render()
         self.transform.disable()
         self.window.flip()
 
@@ -91,11 +95,3 @@ class FilledPolygon(Geom):
         for p in self.v:
             glVertex3f(p[0], p[1],0)  # draw each vertex
         glEnd()
-
-viewer = Viewer(600,400)
-
-for i in range(100):
-    viewer.render()
-    print(i)
-
-viewer.close()
