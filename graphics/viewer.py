@@ -27,6 +27,12 @@ class Viewer:
     def __del__(self):
         self.close()
 
+class Attr:
+    def enable(self):
+        raise NotImplementedError
+    def disable(self):
+        pass
+
 viewer = Viewer(600,400)
 
 for i in range(100):
