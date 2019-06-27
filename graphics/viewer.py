@@ -79,6 +79,18 @@ class Geom:
     def set_color(self, r, g, b):
         self._color.vec4 = (r, g, b, 1)
 
+class FilledPolygon(Geom):
+    def __init__(self, v):
+        Geom.__init__(self)
+        self.v = v
+    def render1(self):
+        if   len(self.v) == 4 : glBegin(GL_QUADS)
+        elif len(self.v)  > 4 : glBegin(GL_POLYGON)
+        else: glBegin(GL_TRIANGLES)
+        for p in self.v:
+            glVertex3f(p[0], p[1],0)  # draw each vertex
+        glEnd()
+
 viewer = Viewer(600,400)
 
 for i in range(100):
