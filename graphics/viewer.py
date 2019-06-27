@@ -10,6 +10,7 @@ class Viewer:
         self.width = width
         self.height = height
         self.window = pyglet.window.Window(width=width, height=height)
+        self.transform = Transform()  # global coordinate frame
 
         glEnable(GL_BLEND)
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
